@@ -1,0 +1,3 @@
+Cliente para consumir y testear el servicio MailWS.
+
+Las clases/estructura de este componente fueron autogenerados por la herramienta SoapUI, directamente desde la Url del servicio MailWS instalado y funcionando en servidor.

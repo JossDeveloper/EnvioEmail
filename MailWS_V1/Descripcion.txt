@@ -1,0 +1,4 @@
+Web Service desarrollado en lenguaje de programacion Java, tiene como función realizar el envio de emails para lo cual recibe la informacion necesaria en sus inputs.
+
+Depende de la configuracion de MailSession en el servidor donde este alojado el Web Service, de donde se obtiene los datos de host y buzon.
+
