@@ -24,12 +24,6 @@ public class EmailEJB {
 
 	private static Logger logger = Logger.getLogger(EmailEJB.class);
 	
-	@Resource(name = "mail/creditoefectivo")
-	private Session mailSessionCreditofectivo;
-
-	@Resource(name = "mail/monitoreoreclamos")
-	private Session mailSessionMonitoreoReclamos;
-	
 	@Resource(name = "mail/autonomia")
 	private Session mailSessionAutonomia;
 	
@@ -44,19 +38,7 @@ public class EmailEJB {
 		respuesta = enviarMail(email, mailSessionAutonomia) ;
 		return respuesta;
 	}
-	
-	public Respuesta enviarMailCreditoEfectivo(Email email) {
-		Respuesta respuesta = new Respuesta();
-		respuesta = enviarMail(email, mailSessionCreditofectivo) ;
-		return respuesta;
-	}
-	
-	public Respuesta enviarMailMonitoreoReclamos(Email email) {
-		Respuesta respuesta = new Respuesta();
-		respuesta = enviarMail(email, mailSessionMonitoreoReclamos) ;
-		return respuesta;
-	}
-	
+		
 	public Respuesta enviarMailBloqueoDefinitivo(Email email) {
 		Respuesta respuesta = new Respuesta();
 		respuesta = enviarMail(email, mailSessionBloqueoDefinitivo) ;
@@ -68,6 +50,7 @@ public class EmailEJB {
 		respuesta = enviarMail(email, mailSessionNotificacion) ;
 		return respuesta;
 	}
+	
 	/**
 	 * @param email
 	 * @return respuesta de envio de Email
@@ -139,7 +122,7 @@ public class EmailEJB {
 		to[0] = simulacion.getEmail();
 		
 		String[] bcc = new String[1];
-		bcc[0] = "jgarciab@bancofalabella.com.pe";
+		bcc[0] = "myemail@company.com.pe";
 		
 		StringBuilder cadena = new StringBuilder("");
 		cadena.append("Nombre: ").

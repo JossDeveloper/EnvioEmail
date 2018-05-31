@@ -62,63 +62,6 @@ public class MailService {
 	 * @param mensaje
 	 * @return una respuesta de exito o fracaso.
 	 */
-	@WebMethod(operationName = "enviarMail")
-	public @WebResult(name="respuesta")Respuesta enviarMail(@WebParam(name = "to") String[] to,
-			@WebParam(name = "cc") String[] cc,
-			@WebParam(name = "bcc") String[] bcc,
-			@WebParam(name = "asunto") String asunto,
-			@WebParam(name = "mensaje") String mensaje,
-			@WebParam(name = "archivo") byte[] archivo,
-			@WebParam(name = "nombreArchivo") String nombreArchivo) {
-
-		logger.info("Invocando al WS enviarMail");
-		
-		Email email = new Email();
-		email.setTo(to);
-		email.setCc(cc);
-		email.setCc(bcc);
-		email.setAsunto(asunto);
-		email.setMensaje(mensaje);
-		email.setArchivo(archivo);
-		email.setNombreArchivo(nombreArchivo);
-
-		logger.info(email.toString());
-		
-		return emailEJB.enviarMailCreditoEfectivo(email);
-	}
-	
-	/**
-	 * @param to
-	 * @param cc
-	 * @param asunto
-	 * @param mensaje
-	 * @return una respuesta de exito o fracaso.
-	 */
-	@WebMethod(operationName = "enviarMailMonitoreoReclamos")
-	public @WebResult(name="respuesta")Respuesta enviarMailMonitoreoReclamos(@WebParam(name = "to") String[] to,
-			@WebParam(name = "cc") String[] cc,
-			@WebParam(name = "bcc") String[] bcc,
-			@WebParam(name = "asunto") String asunto,
-			@WebParam(name = "mensaje") String mensaje,
-			@WebParam(name = "archivo") byte[] archivo,
-			@WebParam(name = "nombreArchivo") String nombreArchivo) {
-
-		logger.info("Invocando al WS enviarMail");
-		
-		Email email = new Email();
-		email.setTo(to);
-		email.setCc(cc);
-		email.setCc(bcc);
-		email.setAsunto(asunto);
-		email.setMensaje(mensaje);
-		email.setArchivo(archivo);
-		email.setNombreArchivo(nombreArchivo);
-
-		logger.info(email.toString());
-		
-		return emailEJB.enviarMailMonitoreoReclamos(email);
-	}
-	
 	@WebMethod(operationName = "enviarMailBloqueoDefinitivo")
 	public @WebResult(name="respuesta")Respuesta enviarMailBloqueoDefinitivo(@WebParam(name = "to") String[] to,
 			@WebParam(name = "cc") String[] cc,
@@ -177,6 +120,13 @@ public class MailService {
 		return emailEJB.enviarMailNotificacion(email);
 	}
 	
+	/**
+	 * @param to
+	 * @param cc
+	 * @param asunto
+	 * @param mensaje
+	 * @return una respuesta de exito o fracaso.
+	 */
 	@WebMethod(operationName = "enviaSimulacionPV")
 	public @WebResult(name="respuesta")Respuesta enviaSimulacionPV(@WebParam(name = "email") String email, 
 			@WebParam(name = "nombre") String nombre, 

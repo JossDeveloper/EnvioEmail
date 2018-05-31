@@ -24,7 +24,33 @@ import javax.xml.ws.ResponseWrapper;
 })
 public interface Mail {
 
-
+	/**
+     * 
+     * @param mensaje
+     * @param telefono
+     * @param nombre
+     * @param email
+     * @param dni
+     * @return
+     *     returns pe.bf.ws.mail.Respuesta
+     */
+    @WebMethod
+    @WebResult(name = "respuesta", targetNamespace = "")
+    @RequestWrapper(localName = "enviaSimulacionPV", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviaSimulacionPV")
+    @ResponseWrapper(localName = "enviaSimulacionPVResponse", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviaSimulacionPVResponse")
+    @Action(input = "http://ws.mail.bf.pe/Mail/enviaSimulacionPVRequest", output = "http://ws.mail.bf.pe/Mail/enviaSimulacionPVResponse")
+    public Respuesta enviaSimulacionPV(
+        @WebParam(name = "email", targetNamespace = "")
+        String email,
+        @WebParam(name = "nombre", targetNamespace = "")
+        String nombre,
+        @WebParam(name = "dni", targetNamespace = "")
+        int dni,
+        @WebParam(name = "telefono", targetNamespace = "")
+        String telefono,
+        @WebParam(name = "mensaje", targetNamespace = "")
+        String mensaje);
+	
     /**
      * 
      * @param cc
@@ -57,40 +83,7 @@ public interface Mail {
         byte[] archivo,
         @WebParam(name = "nombreArchivo", targetNamespace = "")
         String nombreArchivo);
-
-    /**
-     * 
-     * @param cc
-     * @param nombreArchivo
-     * @param bcc
-     * @param archivo
-     * @param asunto
-     * @param to
-     * @param mensaje
-     * @return
-     *     returns pe.bf.ws.mail.Respuesta
-     */
-    @WebMethod
-    @WebResult(name = "respuesta", targetNamespace = "")
-    @RequestWrapper(localName = "enviarMailMonitoreoReclamos", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviarMailMonitoreoReclamos")
-    @ResponseWrapper(localName = "enviarMailMonitoreoReclamosResponse", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviarMailMonitoreoReclamosResponse")
-    @Action(input = "http://ws.mail.bf.pe/Mail/enviarMailMonitoreoReclamosRequest", output = "http://ws.mail.bf.pe/Mail/enviarMailMonitoreoReclamosResponse")
-    public Respuesta enviarMailMonitoreoReclamos(
-        @WebParam(name = "to", targetNamespace = "")
-        List<String> to,
-        @WebParam(name = "cc", targetNamespace = "")
-        List<String> cc,
-        @WebParam(name = "bcc", targetNamespace = "")
-        List<String> bcc,
-        @WebParam(name = "asunto", targetNamespace = "")
-        String asunto,
-        @WebParam(name = "mensaje", targetNamespace = "")
-        String mensaje,
-        @WebParam(name = "archivo", targetNamespace = "")
-        byte[] archivo,
-        @WebParam(name = "nombreArchivo", targetNamespace = "")
-        String nombreArchivo);
-
+    
     /**
      * 
      * @param cc
@@ -156,65 +149,5 @@ public interface Mail {
         byte[] archivo,
         @WebParam(name = "nombreArchivo", targetNamespace = "")
         String nombreArchivo);
-
-    /**
-     * 
-     * @param mensaje
-     * @param telefono
-     * @param nombre
-     * @param email
-     * @param dni
-     * @return
-     *     returns pe.bf.ws.mail.Respuesta
-     */
-    @WebMethod
-    @WebResult(name = "respuesta", targetNamespace = "")
-    @RequestWrapper(localName = "enviaSimulacionPV", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviaSimulacionPV")
-    @ResponseWrapper(localName = "enviaSimulacionPVResponse", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviaSimulacionPVResponse")
-    @Action(input = "http://ws.mail.bf.pe/Mail/enviaSimulacionPVRequest", output = "http://ws.mail.bf.pe/Mail/enviaSimulacionPVResponse")
-    public Respuesta enviaSimulacionPV(
-        @WebParam(name = "email", targetNamespace = "")
-        String email,
-        @WebParam(name = "nombre", targetNamespace = "")
-        String nombre,
-        @WebParam(name = "dni", targetNamespace = "")
-        int dni,
-        @WebParam(name = "telefono", targetNamespace = "")
-        String telefono,
-        @WebParam(name = "mensaje", targetNamespace = "")
-        String mensaje);
-
-    /**
-     * 
-     * @param cc
-     * @param nombreArchivo
-     * @param bcc
-     * @param archivo
-     * @param asunto
-     * @param to
-     * @param mensaje
-     * @return
-     *     returns pe.bf.ws.mail.Respuesta
-     */
-    @WebMethod
-    @WebResult(name = "respuesta", targetNamespace = "")
-    @RequestWrapper(localName = "enviarMail", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviarMail")
-    @ResponseWrapper(localName = "enviarMailResponse", targetNamespace = "http://ws.mail.bf.pe/", className = "pe.bf.ws.mail.EnviarMailResponse")
-    @Action(input = "http://ws.mail.bf.pe/Mail/enviarMailRequest", output = "http://ws.mail.bf.pe/Mail/enviarMailResponse")
-    public Respuesta enviarMail(
-        @WebParam(name = "to", targetNamespace = "")
-        List<String> to,
-        @WebParam(name = "cc", targetNamespace = "")
-        List<String> cc,
-        @WebParam(name = "bcc", targetNamespace = "")
-        List<String> bcc,
-        @WebParam(name = "asunto", targetNamespace = "")
-        String asunto,
-        @WebParam(name = "mensaje", targetNamespace = "")
-        String mensaje,
-        @WebParam(name = "archivo", targetNamespace = "")
-        byte[] archivo,
-        @WebParam(name = "nombreArchivo", targetNamespace = "")
-        String nombreArchivo);
-
+    
 }
